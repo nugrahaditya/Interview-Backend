@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Moduit.Interview.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Net.Http;
 using Newtonsoft.Json;
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Moduit.Interview.Controllers
 {
@@ -33,11 +31,9 @@ namespace Moduit.Interview.Controllers
 
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync(qOneUri))
-                {
-                    var apiResponse = await response.Content.ReadAsStringAsync();
-                    qOne = JsonConvert.DeserializeObject<QOne>(apiResponse);
-                }
+                using var response = await httpClient.GetAsync(qOneUri);
+                var apiResponse = await response.Content.ReadAsStringAsync();
+                qOne = JsonConvert.DeserializeObject<QOne>(apiResponse);
             }
 
             return qOne;

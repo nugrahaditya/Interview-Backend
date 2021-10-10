@@ -33,11 +33,9 @@ namespace Moduit.Interview.Controllers
 
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync(qTwoUri))
-                {
-                    var apiResponse = await response.Content.ReadAsStringAsync();
-                    qTwoList = JsonConvert.DeserializeObject<List<QOne>>(apiResponse);
-                }
+                using var response = await httpClient.GetAsync(qTwoUri);
+                var apiResponse = await response.Content.ReadAsStringAsync();
+                qTwoList = JsonConvert.DeserializeObject<List<QOne>>(apiResponse);
             }
 
             return qTwoList.Where(t => (t.Description.ToLower().Contains("ergonomic") || t.Title.ToLower().Contains("ergonomic")) && 
@@ -46,6 +44,5 @@ namespace Moduit.Interview.Controllers
                 .Take(3)
                 .ToList();
         }
-
     }
 }
