@@ -14,10 +14,10 @@ namespace Moduit.Interview.Controllers
     {
         private readonly Uri _moduitUrl = new Uri("https://screening.moduit.id/");
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
 
         /**
          * Question Three
@@ -25,24 +25,24 @@ namespace Moduit.Interview.Controllers
          *  1. If response object doesn't have Items, then it won't be added to the result list 
          */
         [HttpGet]
-        public async Task<ActionResult<List<QThreeFlatten>>> GetThree()
+        public async Task<ActionResult<List<QThree>>> GetThree()
         {
-            var qThreeList = new List<QThreeFlatten>();
-            var qThree = new List<QThree>();
+            var qThreeList = new List<QThree>();
+            var qThree = new List<QThreeRaw>();
             var qThreeUri = new Uri(_moduitUrl, "backend/question/three");
 
             using (var httpClient = new HttpClient())
             {
                 using var response = await httpClient.GetAsync(qThreeUri);
                 var apiResponse = await response.Content.ReadAsStringAsync();
-                qThree = JsonConvert.DeserializeObject<List<QThree>>(apiResponse);
+                qThree = JsonConvert.DeserializeObject<List<QThreeRaw>>(apiResponse);
             }
 
             foreach (var qthree in qThree)
             {
                 foreach (var qthreeItem in qthree.Items)
                 {
-                    qThreeList.Add(new QThreeFlatten
+                    qThreeList.Add(new QThree
                     {
                         Id = qthree.Id,
                         Category = qthree.Category,

@@ -15,10 +15,10 @@ namespace Moduit.Interview.Controllers
     {
         private readonly Uri _moduitUrl = new Uri("https://screening.moduit.id/");
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
 
         /**
          * Question Two
