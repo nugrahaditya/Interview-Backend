@@ -21,7 +21,7 @@ namespace Moduit.Interview.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<QOne>> GetAll()
+        public async Task<ActionResult<QOne>> GetOne()
         {
             var qOne = new QOne();
             var qOneUri = new Uri(_moduitUrl, "backend/question/one");

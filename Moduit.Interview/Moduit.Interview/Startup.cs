@@ -71,7 +71,7 @@ namespace Moduit.Interview
                 //endpoints.MapControllers();
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=One}/{action=Index}/{id?}");
             });
         }
     }
