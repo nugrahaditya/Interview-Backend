@@ -42,6 +42,10 @@ namespace Moduit.Interview
                 });
                 c.ResolveConflictingActions(apiDescription => apiDescription.First());
             });
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.IgnoreNullValues = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -20,6 +20,11 @@ namespace Moduit.Interview.Controllers
             return View();
         }
 
+        /**
+         * Question One
+         * Assumption:
+         *  None
+         */
         [HttpGet]
         public async Task<ActionResult<QOne>> GetOne()
         {

@@ -20,6 +20,11 @@ namespace Moduit.Interview.Controllers
             return View();
         }
 
+        /**
+         * Question Two
+         * Assumption:
+         *  1. Cannot find any data that have 'Ergonomics', so finding data with 'Ergonomic' instead
+         */
         [HttpGet]
         public async Task<ActionResult<List<QOne>>> GetTwo()
         {
@@ -35,8 +40,8 @@ namespace Moduit.Interview.Controllers
                 }
             }
 
-            return qTwoList.Where(t => (t.Description.ToLower().Contains("ergonomics") || t.Title.ToLower().Contains("ergonomics")) && 
-                                        (t.Tags != null && t.Tags.Contains("Sports")))
+            return qTwoList.Where(t => (t.Description.ToLower().Contains("ergonomic") || t.Title.ToLower().Contains("ergonomic")) && 
+                                        (t.Tags != null && t.Tags.Count > 0 && t.Tags.Contains("Sports")))
                 .OrderByDescending(t => t.Id)
                 .Take(3)
                 .ToList();
