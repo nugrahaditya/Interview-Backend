@@ -40,7 +40,7 @@ namespace Moduit.Interview.Controllers
 
             return qTwoList.Where(t => (t.Description.ToLower().Contains("ergonomic") || t.Title.ToLower().Contains("ergonomic")) && 
                                         (t.Tags != null && t.Tags.Count > 0 && t.Tags.Contains("Sports")))
-                .OrderByDescending(t => t.Id)
+                .OrderBy(t => t.Id)
                 .Take(3)
                 .ToList();
         }
